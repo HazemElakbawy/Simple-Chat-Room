@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Spring Boot WebSocket Chat Demo</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🚀 Spring Boot WebSocket Chat</h1>
+        <p>Real-time messaging with STOMP protocol</p>
+    </div>
+
+    <div class="status">
+        <span class="connection-status disconnected" id="connectionStatus"></span>
+        <span id="statusText">Disconnected</span>
+        <span class="user-count" id="userCount" style="float: right;">Users: 0</span>
+    </div>
+
+    <div class="chat-area">
+        <div class="online-users" id="onlineUsers" style="display: none;">
+            <h4>Online Users</h4>
+            <div class="user-list" id="userList"></div>
+        </div>
+
+        <div class="messages" id="messages"></div>
+        <div class="typing-indicator" id="typingIndicator"></div>
+
+        <div class="input-area">
+            <input class="username-input" id="usernameInput" maxlength="20" placeholder="Your name" type="text">
+            <button class="btn btn-success" id="connectBtn">Connect</button>
+            <button class="btn btn-danger" disabled id="disconnectBtn">Disconnect</button>
+        </div>
+
+        <div class="input-area" style="margin-top: 10px;">
+            <select class="message-type-select" disabled id="messageType">
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+            </select>
+            <input class="username-input" disabled id="targetUser" placeholder="To user..." style="display: none;"
+                   type="text">
+            <input class="message-input" disabled id="messageInput" placeholder="Type your message..." type="text">
+            <button class="btn btn-primary" disabled id="sendBtn">Send</button>
+        </div>
+    </div>
+</div>
+
+<!-- Include SockJS and STOMP libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
